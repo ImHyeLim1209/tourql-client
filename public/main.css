@@ -1,0 +1,40 @@
+:root {
+  --form-border: 15px;
+  --form-margin: 3px;
+}
+
+*{
+  box-sizing: border-box;
+}
+
+h1 {
+  font-family: 'Gaegu', cursive;
+}
+
+.search-bar {
+  display:flex;
+  flex-direction: row;
+}
+
+.search-bar > .form-control {
+  border: none;
+  outline: none;
+  border-radius: var(--form-border);
+  width: 100%;
+  padding: 10px;
+  margin-right: var(--form-margin);
+}
+
+.search-bar > .btn {
+  border-radius: var(--form-border);
+  border: none;
+  outline: none;
+  background: #B2CCFF;
+  width: 30%;
+  margin-left: var(--form-margin);
+}
+
+.search-bar .btn:hover {
+  color: #f0f0f0;
+  background: #4375DB;
+}
