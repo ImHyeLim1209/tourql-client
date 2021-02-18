@@ -1,10 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-const Search = () => (
-  <div className="search-bar">
-    <input className="form-control" type="text" />
-    <button className="form-submit-btn btn">검색</button>
-  </div>
-);
+const Search = ({ handleKeyword }) => {
+
+  const [keyword, setKeyword] = useState('');
+
+  const changeKeyword = (text) => {
+    setKeyword(text);
+  }
+
+  return (<div className="search-bar">
+    <input className="form-control" type="text" onChange={(e) => { changeKeyword(e.target.value) }} />
+    <button className="form-submit-btn btn" onClick={() => handleKeyword(keyword)}>검색</button>
+  </div>);
+};
 
 export default Search;
