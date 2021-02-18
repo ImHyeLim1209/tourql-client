@@ -8,7 +8,7 @@ export const Container = styled.div`
 `;
 
 export const Header = styled.header`
-background-image: linear-gradient(to top, #5ee7df 0%, #b490ca 100%);
+  background-image: linear-gradient(to top, #5ee7df 0%, #b490ca 100%);
   height: 45vh;
   color: white;
   display: flex;
@@ -23,13 +23,20 @@ export const Title = styled.h1`
   font-weight: 600;
   margin-bottom: 20px;
 `;
-export const Subtitle = styled.h3`
-  font-size: 35px;
-`;
+
 export const Loading = styled.div`
   font-size: 18px;
   opacity: 0.5;
   font-weight: 500;
   margin-top: 10px;
   font-family: 'Gaegu', cursive;
+`;
+
+export const Sights = styled.div`
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 25px;
+  width: 60%;
+  position: relative;
+  top: -50px;
 `;
