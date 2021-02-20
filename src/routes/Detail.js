@@ -7,6 +7,7 @@ import { Container, Title, AddrInfo, Description, Column, Image, DetailInfo } fr
 const GET_SIGHT = gql`
 query Sight($id: Int!) {
   sight(id: $id) {
+    contentid
     homepage
     tel
     title
@@ -37,7 +38,7 @@ export default () => {
         {!loading && data.sight && (
           <>
             <DetailInfo>
-              {data.sight.homepage.replace(/(<([^>]+)>)/g, '')}
+              {data.sight.homepage?.replace(/(<([^>]+)>)/g, '')}
             </DetailInfo>
             <AddrInfo>
               {data.sight.addr1} <span> </span> {data.sight.addr2}
@@ -52,22 +53,3 @@ export default () => {
     </Container>
   );
 };
-
-
-// export default () => {
-//   const { id } = useParams();
-//   console.log(id);
-//   const { loading, data, error } = useQuery(GET_SIGHT, {
-//     variables: {
-//       id: Number(id)
-//     },
-//   });
-
-//   if (loading) { return 'loading' };
-
-//   if (data && data.sight) {
-//     return data.sight.title;
-//   }
-
-//   return "Detail";
-// };

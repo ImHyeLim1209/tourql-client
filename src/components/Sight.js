@@ -1,18 +1,31 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { gql, useMutation } from '@apollo/client';
+import { Container, Thumbnail, Title, Icon } from './SightStyle';
 
-export default ({ id, title, image }) => {
+const LIKE_SIGHT = gql`
+  mutation toggleLikeSight($id: Int!, $isLiked: Boolean) {
+    toggleLikeSight(id:$id, isLiked:$isLiked) @client
+  }
+`
 
-  let thumbnailImage = {
-    backgroundImage: image ? `url(${image})` : "url(nature.png)"
-  };
+export default ({ id, title, image, isLiked }) => {
+  const [toggleLikeSight] = useMutation(LIKE_SIGHT,
+    {
+      variables: { id: parseInt(id), isLiked: Boolean(isLiked) }
+    }
+  );
 
   return (
     <Link to={`/${id}`} style={{ textDecoration: 'none' }}>
-      <div className="sight-container">
-        <div className="thumbnail" style={thumbnailImage} bg={image} />
-        <h1 className="sight-title">{title}</h1>
-      </div>
+      <Container>
+        <Thumbnail bg={image ? image : "./res/nature.png"} ></Thumbnail>
+        <Icon bg={isLiked ? "./res/like.png" : "./res/unlike.png"} onClick={(e) => {
+          e.preventDefault();
+          toggleLikeSight();
+        }}></Icon>
+        <Title className="sight-title">{title}</Title>
+      </Container>
     </Link>
   )
 }

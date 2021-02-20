@@ -5,6 +5,7 @@ import './Home.css';
 
 export default () => {
   const [key, setKeyword] = useState('공원');
+  console.log("Home", key)
   return (
     <div className="container">
       <header>
