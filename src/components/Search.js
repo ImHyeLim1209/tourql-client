@@ -6,6 +6,7 @@ const Search = ({ handleKeyword }) => {
 
   const changeKeyword = (text) => {
     setKeyword(text);
+    window.sessionStorage.setItem('keyword', text);
   }
 
   return (<div className="search-bar">

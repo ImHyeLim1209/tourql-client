@@ -4,8 +4,7 @@ import Sights from '../components/Sights'
 import './Home.css';
 
 export default () => {
-  const [key, setKeyword] = useState('공원');
-  console.log("Home", key)
+  const [key, setKeyword] = useState(sessionStorage.getItem('keyword') ? sessionStorage.getItem('keyword') : '공원');
   return (
     <div className="container">
       <header>
